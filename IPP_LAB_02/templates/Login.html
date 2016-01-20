@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{title}}</title>
+</head>
+
+<body>
+<h2>Login</h2>
+<form name="login" method="post">
+     App ID<br>
+    <input type="text" name="appID" value="{{request.form.appID}}" required><br>
+    E-mail<br>
+    <input type="text" name="email" value="{{request.form.email}}" required><br>
+    Password<br>
+    <input type="password" name="password" value="{{request.form.password}}" required><br>
+    <input type="submit" value="Send">
+    <input type="reset" value="Clear">
+</form>
+
+</body>
+
+</html>

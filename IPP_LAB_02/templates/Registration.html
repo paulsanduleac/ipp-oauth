@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{title}}</title>
+</head>
+
+<body>
+<h2>Registration</h2>
+<form name="register" method="post">
+     App ID<br>
+    <input type="text" name="appID" value="{{request.form.appID}}" required><br>
+    Name_surname<br>
+    <input type="text" name="name_surname" value="{{request.form.name_surname}}" required><br>
+    E-mail<br>
+    <input type="text" name="email" value="{{request.form.email}}" required><br>
+    Password<br>
+    <input type="password" name="password" value="{{request.form.password}}" required><br>
+    <input type="submit" value="Send">
+</form>
+
+</body>
+
+</html>
