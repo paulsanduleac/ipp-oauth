@@ -6,7 +6,7 @@ def create_users_db():
     with sqlite3.connect("users.db") as connection:
         c = connection.cursor()
         c.execute('''CREATE TABLE users(email TEXT PRIMARY KEY, password TEXT, appid TEXT, name_surname TEXT)''')
-        c.execute('''INSERT INTO users(email, password, appid, name_surname) VALUES(?,?,?,?)''', ('grea8dude@gmail.com',pw,'ap001','grea8_dude'))
+        c.execute('''INSERT INTO users(email, password, appid, name_surname) VALUES(?,?,?,?)''', ('gr8mail@gmail.com',pw,'ap001','gr8_user'))
 
 
 def create_login_db():
