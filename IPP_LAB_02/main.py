@@ -44,7 +44,7 @@ def registration():
                     return "User succesfully registered." + "<br> <a href='/'>Return to menu</a>"
                 else:
                     c.close()
-                    return "A user with this email already exists. Please try using a different email address."
+                    return "A user with this email already exists. Please try using a different email address." + "<br> <a href='/'>Return to menu</a>"
 
         return render_template("Registration.html", title=title)
     except Exception, e:
@@ -67,14 +67,14 @@ def login():
                 response = c.fetchone()
                 c.close()
                 if response is None:
-                    return "Error"
+                    return "Error" + "<br> <a href='/'>Return to menu</a>"
                 else:
                     with sqlite3.connect("data_logins.db") as conn:
                         c_login = conn.cursor()
                         token = gen_token(150)
                         c_login.execute('''INSERT INTO login(login_id, email, password, appid, timestamp, token) VALUES(?,?,?,?,?,?)''', (login_id, mail, hash_data(password), appID, current_time, token))
                         c_login.close()
-                    return "success " + token
+                    return "Successflly logged in. Your token is:" + token + "<br> <a href='/'>Return to menu</a>"
 
         return render_template("Login.html", title=title)
 
@@ -96,9 +96,9 @@ def stats():
                 response = c.fetchone()
                 c.close()
                 if response is None:
-                    return "Invalid Data"
+                    return "Invalid Data" + "<br> <a href='/'>Return to menu</a>"
                 else:
-                    return timestamp_to_readable(float(response[3]))
+                    return "Login date: " + timestamp_to_readable(float(response[4])) + "<br> <a href='/'>Return to menu</a>"
         return render_template("Stats.html", title=title)
 
     except Exception, e:
