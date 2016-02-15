@@ -1,19 +1,16 @@
+# Run this to create the two SQL databases (users and login)
+
 import sqlite3
-pw = '2578f6eb0f643a7f65a07571033062f8659e74d676d447cc9d0a878c16c19e31' #m3g@pwd
 
-
-def create_users_db():
-    with sqlite3.connect("users.db") as connection:
+def create_users_db(): 
+    with sqlite3.connect("data_users.db") as connection:
         c = connection.cursor()
         c.execute('''CREATE TABLE users(email TEXT PRIMARY KEY, password TEXT, appid TEXT, name_surname TEXT)''')
-        c.execute('''INSERT INTO users(email, password, appid, name_surname) VALUES(?,?,?,?)''', ('gr8mail@gmail.com',pw,'ap001','gr8_user'))
-
 
 def create_login_db():
-    with sqlite3.connect("login.db") as connection:
+    with sqlite3.connect("data_logins.db") as connection:
         c = connection.cursor()
-        c.execute('''CREATE TABLE login(email TEXT PRIMARY KEY, password TEXT, appid TEXT, timestamp TEXT, token TEXT)''')
-
+        c.execute('''CREATE TABLE login(login_id TEXT PRIMARY KEY, email TEXT, password TEXT, appid TEXT, timestamp TEXT, token TEXT)''')
 
 create_users_db()
 create_login_db()
